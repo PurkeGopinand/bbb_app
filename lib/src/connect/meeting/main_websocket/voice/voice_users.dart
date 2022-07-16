@@ -33,7 +33,7 @@ class VoiceUsersModule extends Module {
   void onConnected() {
     subscribe(VOICE_USERS);
 
-    _muteEventsSubscription = _provider.muteBloc.listen((state) {
+    _muteEventsSubscription = _provider.muteBloc.stream.listen((state) {
       if (state == MuteState.MUTED || state == MuteState.UNMUTED) {
         final isMuted = state == MuteState.MUTED;
 

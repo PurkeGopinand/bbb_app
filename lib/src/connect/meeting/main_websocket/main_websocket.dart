@@ -99,7 +99,7 @@ class MainWebSocket {
     _webSocket.closeWithReason(WebSocketStatus.goingAway);
 
     // Call logout URL
-    await http.get(_meetingInfo.logoutUrl, headers: {
+    await http.get(Uri.parse(_meetingInfo.logoutUrl), headers: {
       "cookie": _meetingInfo.cookie,
     });
   }

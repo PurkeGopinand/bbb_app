@@ -637,7 +637,7 @@ class _StartViewState extends State<StartView> {
 
   Future<void> _handleUrlUpdate(String meetingUrl) async {
     try {
-      http.Response response = await http.get(meetingUrl);
+      http.Response response = await http.get(Uri.parse(meetingUrl));
       response.body.contains('room_access_code')
           ? setState(() {
               _accessCodeVisible = true;

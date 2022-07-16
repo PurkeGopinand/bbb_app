@@ -205,7 +205,7 @@ class BBBMeetingInfoLoader extends MeetingInfoLoader {
       String meetingUrl, String authenticityToken, String accessCode) async {
     /// post login parameter to url/login
     http.Response response = await http.post(
-      meetingUrl + '/login',
+      Uri.parse(meetingUrl + '/login'),
       headers: {'Cookie': _cookie},
       body: {
         "utf8": "true",
@@ -233,7 +233,7 @@ class BBBMeetingInfoLoader extends MeetingInfoLoader {
     String path = Uri.parse(meetingUrl).path;
 
     http.Response response = await http.post(
-      meetingUrl,
+      Uri.parse(meetingUrl),
       headers: {'Cookie': _cookie},
       body: {
         "utf8": "true",
@@ -348,7 +348,7 @@ class BBBMeetingInfoLoader extends MeetingInfoLoader {
   Future<String> _loadAuthenticityToken(String meetingUrl) async {
     // Make GET request to the meeting URL, the cookie is for the second request, in the first it's empty
     http.Response response = await http.get(
-      meetingUrl,
+      Uri.parse(meetingUrl),
       headers: {'Cookie': _cookie},
     );
     if (response.statusCode != HttpStatus.ok) {

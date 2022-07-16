@@ -53,7 +53,7 @@ class _PresentationWidgetState extends State<PresentationWidget> {
 
   /// Reload the SVG from the passed [url].
   Future<void> _reloadSVG(String url) async {
-    http.Response response = await http.get(url);
+    http.Response response = await http.get(Uri.parse(url));
 
     DrawableRoot svgRoot =
         await svg.fromSvgString(response.body, response.body);
